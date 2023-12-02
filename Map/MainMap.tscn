@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dupctds10emrk"]
+
+[sub_resource type="Terrain3DStorage" id="Terrain3DStorage_gijdl"]
+version = 0.842
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ulbw0"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7dtvs"]
+generate_mipmaps = false
+seamless = true
+noise = SubResource("FastNoiseLite_ulbw0")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_xq0cl"]
+_shader_parameters = {
+"blend_sharpness": 0.87,
+"height_blending": true,
+"noise_scale": 0.1,
+"noise_texture": SubResource("NoiseTexture2D_7dtvs")
+}
+show_checkered = true
+
+[sub_resource type="Terrain3DTextureList" id="Terrain3DTextureList_q3xkx"]
+
+[node name="Map" type="Node3D"]
+
+[node name="Terrain3D" type="Terrain3D" parent="."]
+storage = SubResource("Terrain3DStorage_gijdl")
+material = SubResource("Terrain3DMaterial_xq0cl")
+texture_list = SubResource("Terrain3DTextureList_q3xkx")

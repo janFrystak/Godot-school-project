@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://blaieaqp413k7"]
+
+[ext_resource type="Script" path="res://addons/terrain_3d/tools/importer.gd" id="1_60b8f"]
+
+[sub_resource type="Terrain3DStorage" id="Terrain3DStorage_rmuvl"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_l4t65"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wagvk"]
+generate_mipmaps = false
+seamless = true
+noise = SubResource("FastNoiseLite_l4t65")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_cjpaa"]
+_shader_parameters = {
+"blend_sharpness": 0.87,
+"height_blending": true,
+"noise_scale": 0.1,
+"noise_texture": SubResource("NoiseTexture2D_wagvk")
+}
+show_checkered = true
+
+[sub_resource type="Terrain3DTextureList" id="Terrain3DTextureList_yjkn1"]
+
+[node name="Importer" type="Terrain3D"]
+storage = SubResource("Terrain3DStorage_rmuvl")
+material = SubResource("Terrain3DMaterial_cjpaa")
+texture_list = SubResource("Terrain3DTextureList_yjkn1")
+script = ExtResource("1_60b8f")
