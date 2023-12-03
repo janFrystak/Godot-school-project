@@ -1,30 +1,57 @@
-[gd_scene load_steps=6 format=3 uid="uid://dupctds10emrk"]
+[gd_scene load_steps=9 format=3 uid="uid://dupctds10emrk"]
 
-[sub_resource type="Terrain3DStorage" id="Terrain3DStorage_gijdl"]
-version = 0.842
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_4wp4p"]
+[ext_resource type="Resource" path="res://Map/MapData/data.hterrain" id="2_ix5cc"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="2_j7f2d"]
+[ext_resource type="PackedScene" uid="uid://gmpdfqbn231g" path="res://Actors/Friendly/Player.tscn" id="3_mi1hl"]
+[ext_resource type="Script" path="res://Map/DirectionalLight3D.gd" id="4_stqde"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ulbw0"]
-noise_type = 0
+[sub_resource type="Resource" id="Resource_gquqd"]
+script = ExtResource("2_j7f2d")
+mode = 0
+textures = [[], []]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7dtvs"]
-generate_mipmaps = false
-seamless = true
-noise = SubResource("FastNoiseLite_ulbw0")
+[sub_resource type="Sky" id="Sky_un102"]
 
-[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_xq0cl"]
-_shader_parameters = {
-"blend_sharpness": 0.87,
-"height_blending": true,
-"noise_scale": 0.1,
-"noise_texture": SubResource("NoiseTexture2D_7dtvs")
-}
-show_checkered = true
-
-[sub_resource type="Terrain3DTextureList" id="Terrain3DTextureList_q3xkx"]
+[sub_resource type="Environment" id="Environment_j6dum"]
+background_mode = 2
+background_color = Color(0.529412, 0.807843, 0.921569, 1)
+sky = SubResource("Sky_un102")
+tonemap_mode = 3
+tonemap_exposure = 0.5
+tonemap_white = 1.1
+fog_enabled = true
+fog_light_color = Color(0.854902, 0.752941, 0.611765, 1)
+fog_density = 0.0007
+fog_sky_affect = 0.29
+volumetric_fog_detail_spread = 3.82368
 
 [node name="Map" type="Node3D"]
 
-[node name="Terrain3D" type="Terrain3D" parent="."]
-storage = SubResource("Terrain3DStorage_gijdl")
-material = SubResource("Terrain3DMaterial_xq0cl")
-texture_list = SubResource("Terrain3DTextureList_q3xkx")
+[node name="HTerrain" type="Node3D" parent="."]
+script = ExtResource("1_4wp4p")
+_terrain_data = ExtResource("2_ix5cc")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_gquqd")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+
+[node name="Player" parent="." instance=ExtResource("3_mi1hl")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 163.535, 256.71, 12.093)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.290702, 0.956814, 0, -0.956814, -0.290702, 0, 5.80029, -0.892776)
+script = ExtResource("4_stqde")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j6dum")
