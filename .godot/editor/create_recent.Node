@@ -1,4 +1,10 @@
-Camera3D
+AnimationPlayer
+HTerrain
 WorldEnvironment
 DirectionalLight3D
-HTerrain
+Camera3D
+Node3D
+CharacterBody3D
+CSGBox3D
+SpringArm3D
+CollisionShape3D

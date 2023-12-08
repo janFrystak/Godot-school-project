@@ -1,1 +1,4 @@
 res://Map/MainMap.tscn
+res://Actors/Friendly/playerTrue.tscn
+res://Map/TestWorld.tscn
+res://Actors/Friendly/playerTrue.gd
