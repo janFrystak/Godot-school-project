@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dk4f72pajn8ow"]
+
+[ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://Assets/grids/Dark/texture_05.png" id="1_6lkcb"]
+[ext_resource type="Texture2D" uid="uid://d2m8qf54p78pp" path="res://Assets/grids/Orange/texture_03.png" id="2_1x1at"]
+[ext_resource type="PackedScene" uid="uid://chgqj2khdq3ei" path="res://Actors/Friendly/playerTrue.tscn" id="3_qhly2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_paq8h"]
+albedo_texture = ExtResource("1_6lkcb")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u26it"]
+albedo_texture = ExtResource("2_1x1at")
+
+[sub_resource type="Environment" id="Environment_hfm6v"]
+sdfgi_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.866667, 0.878431, 0.901961, 1)
+fog_density = 0.005
+
+[node name="TestWorld" type="Node3D"]
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Map"]
+use_collision = true
+size = Vector3(100, 0.5, 100)
+material = SubResource("StandardMaterial3D_paq8h")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 27.4396, 2.8436, 10.162)
+use_collision = true
+material = SubResource("StandardMaterial3D_u26it")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.326888, 0.945063, 0, -0.945063, 0.326888, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hfm6v")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("3_qhly2")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.924463, 0)

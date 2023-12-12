@@ -1,3 +1,9 @@
+ColorRect
+MeshInstance3D
+CollisionShape3D
+RigidBody3D
+ColorPicker
+Aircraft
 AnimationPlayer
 HTerrain
 WorldEnvironment
@@ -7,4 +13,3 @@ Node3D
 CharacterBody3D
 CSGBox3D
 SpringArm3D
-CollisionShape3D

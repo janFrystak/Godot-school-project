@@ -632,8 +632,8 @@ _data = {
 "RESET": SubResource("Animation_s7ccx")
 }
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 4.75958, 0)
+[node name="bird_body" type="CharacterBody3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.75958, 0)
 script = ExtResource("1_shbvm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -647,23 +647,23 @@ transform = Transform3D(1, 0, -9.31323e-09, 0, 1, 0, 9.31323e-09, 0, 1, 0.500009
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 17, 32)
 fov = 84.8
 
-[node name="Player" type="Node3D" parent="."]
+[node name="Player_model" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93715e-06, -3.3, 0)
 
-[node name="Sketchfab_model" type="Node3D" parent="Player"]
+[node name="Sketchfab_model" type="Node3D" parent="Player_model"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 0, 21.8811, 0)
 
-[node name="EAGLE FLY_fbx" type="Node3D" parent="Player/Sketchfab_model"]
+[node name="EAGLE FLY_fbx" type="Node3D" parent="Player_model/Sketchfab_model"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 
-[node name="Object_2" type="Node3D" parent="Player/Sketchfab_model/EAGLE FLY_fbx"]
+[node name="Object_2" type="Node3D" parent="Player_model/Sketchfab_model/EAGLE FLY_fbx"]
 
-[node name="RootNode" type="Node3D" parent="Player/Sketchfab_model/EAGLE FLY_fbx/Object_2"]
+[node name="RootNode" type="Node3D" parent="Player_model/Sketchfab_model/EAGLE FLY_fbx/Object_2"]
 
-[node name="Object_4" type="Node3D" parent="Player/Sketchfab_model/EAGLE FLY_fbx/Object_2/RootNode"]
+[node name="Object_4" type="Node3D" parent="Player_model/Sketchfab_model/EAGLE FLY_fbx/Object_2/RootNode"]
 transform = Transform3D(-0.0461825, 2.21808e-16, 0.998933, -2.21808e-16, 1, -2.323e-16, -0.998933, -2.323e-16, -0.0461825, 0, 0, 0)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Player/Sketchfab_model/EAGLE FLY_fbx/Object_2/RootNode/Object_4"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Player_model/Sketchfab_model/EAGLE FLY_fbx/Object_2/RootNode/Object_4"]
 transform = Transform3D(0.984808, -3.85577e-17, -0.173648, 3.85577e-17, 0.999999, -3.37349e-18, 0.173648, -3.37323e-18, 0.984808, 4.11372, -20, -34.8472)
 bones/0/name = "_rootJoint"
 bones/0/parent = -1
@@ -1030,20 +1030,18 @@ bones/51/position = Vector3(5.92209, -1.43051e-06, 3.8147e-06)
 bones/51/rotation = Quaternion(-0.0417794, -0.0453166, 0.0387436, 0.997346)
 bones/51/scale = Vector3(1, 1, 1)
 
-[node name="Object_7" type="MeshInstance3D" parent="Player/Sketchfab_model/EAGLE FLY_fbx/Object_2/RootNode/Object_4/Skeleton3D"]
+[node name="Object_7" type="MeshInstance3D" parent="Player_model/Sketchfab_model/EAGLE FLY_fbx/Object_2/RootNode/Object_4/Skeleton3D"]
 transform = Transform3D(1, 3.30872e-24, 0, 0, 1, 1.57164e-23, 0, 6.20385e-24, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_g6eyf")
 skin = SubResource("Skin_poffx")
 
-[node name="Object_6" type="Node3D" parent="Player/Sketchfab_model/EAGLE FLY_fbx/Object_2/RootNode/Object_4"]
+[node name="Object_6" type="Node3D" parent="Player_model/Sketchfab_model/EAGLE FLY_fbx/Object_2/RootNode/Object_4"]
 transform = Transform3D(1, 2.06922e-17, 2.08166e-17, -2.06922e-17, 1, -2.11758e-22, -2.08166e-17, 2.11758e-22, 1, 6.84175e-15, -7.10543e-15, 4.44085e-16)
 
-[node name="White_Eagle" type="Node3D" parent="Player/Sketchfab_model/EAGLE FLY_fbx/Object_2/RootNode/Object_4"]
+[node name="White_Eagle" type="Node3D" parent="Player_model/Sketchfab_model/EAGLE FLY_fbx/Object_2/RootNode/Object_4"]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player_model"]
 autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_ih37g")
 }
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="Player"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqpylcugksq3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fopxv"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ethrn"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_n16ej"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_w0hcv"]
+
+[node name="Bomb" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_fopxv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_ethrn")
+skeleton = NodePath("../..")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0206173, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+transform = Transform3D(0.4, 0, 0, 0, 0.1, 0, 0, 0, 0.4, 0, 0.4, 0)
+shape = SubResource("CylinderShape3D_n16ej")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2"]
+transform = Transform3D(0.4, 0, 0, 0, 0.1, 0, 0, 0, 0.4, 0, 0.399674, 0)
+mesh = SubResource("CylinderMesh_w0hcv")
